@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/api/items")
+@CrossOrigin(origins = "*")
 public class ItemController {
 
     private final Map<Long, Item> store = new ConcurrentHashMap<>();

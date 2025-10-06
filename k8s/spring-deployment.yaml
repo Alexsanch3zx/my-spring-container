@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  labels:
+    app: spring-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+      - name: spring-container
+        image: sanchzzalex/my-spring-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "production"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
